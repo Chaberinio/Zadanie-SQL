@@ -38,6 +38,7 @@ Usuwanie zadań:
 sp_DeleteTask: Usuwa zadanie i odpowiednie wpisy w historii.
 
 Zarządzanie użytkownikami:
+sp_CreateTenant: Tworzy nowy podmiot.
 sp_CreateUser: Tworzy nowego użytkownika.
 sp_AssignUserToManager: Przypisuje pracownika do menadżera.
 
