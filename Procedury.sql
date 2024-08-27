@@ -90,6 +90,9 @@ BEGIN
     DELETE FROM TaskHistory
     WHERE TaskID = @TaskID;
 
+    DELETE FROM TaskShare
+    WHERE TaskID = @TaskID;
+
     DELETE FROM Tasks
     WHERE TaskID = @TaskID;
 END;
