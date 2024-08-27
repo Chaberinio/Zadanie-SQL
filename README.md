@@ -29,21 +29,23 @@ TaskStatistics: Widok generujący statystyki zadań na poziomie użytkowników i
 #Procedury składniowe
 
 Dodawanie zadań:
-sp_CreateTask: Tworzy nowe zadanie.
+CreateTask: Tworzy nowe zadanie.
 
 Edycja zadań:
-sp_UpdateTask: Aktualizuje zadanie oraz dodaje wpis do historii.
+UpdateTask: Aktualizuje zadanie oraz dodaje wpis do historii.
 
 Usuwanie zadań:
-sp_DeleteTask: Usuwa zadanie i odpowiednie wpisy w historii.
+DeleteTask: Usuwa zadanie i odpowiednie wpisy w historii.
 
 Zarządzanie użytkownikami:
-sp_CreateTenant: Tworzy nowy podmiot.
-sp_CreateUser: Tworzy nowego użytkownika.
-sp_AssignUserToManager: Przypisuje pracownika do menadżera.
+CreateTenant: Tworzy nowy podmiot.
+CreateUser: Tworzy nowego użytkownika.
+AssignUserToManager: Przypisuje pracownika do menadżera.
 
 Zarządzanie podmiotami:
-sp_CreateTenant: Tworzy nowy podmiot.
+CreateTenant: Tworzy nowy podmiot.
 
 Przeglądanie statystyk:
-sp_GetTaskStatistics: Zwraca statystyki zadań dla menadżera.
+GetTaskStatistics: Zwraca statystyki zadań dla menadżera.
+
+Skrypty znajdują się w odpowiednio nazwanych plikach.
