@@ -1,4 +1,4 @@
--- generowanie Tenants
+-- generowanie Tenants, tworzy 10 podmiotów
 DECLARE @i INT = 1;
 WHILE @i <= 10
 BEGIN
@@ -6,7 +6,7 @@ BEGIN
     VALUES (CONCAT('Tenant_', @i));
     SET @i = @i + 1;
 END;
--- generowanie Users
+-- generowanie Users tworzy 100 użytkowników, 50 pracowników i 50 menagerów
 DECLARE @i INT = 1;
 DECLARE @TenantID INT;
 WHILE @i <= 100
@@ -20,7 +20,7 @@ BEGIN
     );
     SET @i = @i + 1;
 END;
--- geneorwanie przypisań UserAssigments
+-- geneorwanie przypisań UserAssigments, przypisuje każdemu użytkownikowi menadżera, bez przypisań 1-1
 DECLARE @i INT = 1;
 DECLARE @ManagerID INT;
 DECLARE @EmployeeID INT;
@@ -35,7 +35,7 @@ BEGIN
     END
     SET @i = @i + 1;
 END;
--- generowanie zadan Tasks
+-- generowanie zadan Tasks - tworzy po 1000 zadań dla każdego pracownika
 DECLARE @UserID INT;
 DECLARE @i INT = 1;
 DECLARE @TaskCount INT = 1000;
@@ -69,7 +69,7 @@ END;
 
 CLOSE user_cursor;
 
---generowanie histori zmian
+--generowanie histori zmian - towrzy po 5 zmian dla każdego zadania
 DECLARE @TaskID INT;
 DECLARE @ChangedBy INT;
 DECLARE @i INT = 1;
@@ -104,7 +104,7 @@ BEGIN
 END;
 DEALLOCATE user_cursor;
 
--- generowanie udostępnien zadań
+-- generowanie udostępnien zadań, tworzy po 10 przypisań od każdego zadania
 DECLARE @TaskID INT;
 DECLARE @SharedWithUserID INT;
 DECLARE @i INT = 1;
