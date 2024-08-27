@@ -85,6 +85,11 @@ CREATE PROCEDURE DeleteTask
     @TaskID INT
 AS
 BEGIN
+    SET NOCOUNT ON;
+
+    DELETE FROM TaskHistory
+    WHERE TaskID = @TaskID;
+
     DELETE FROM Tasks
     WHERE TaskID = @TaskID;
 END;
