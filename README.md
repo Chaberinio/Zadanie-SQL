@@ -8,10 +8,12 @@ Historia zmian - W systemie przechowywana jest historia zmian każdego zadania.
 Statystyki - Menadżerowie mogą przeglądać statystyki zadań na poziomie swoich podwładnych z podziałem na miesiące. 
 
 #Tabele
+
 Podmioty (Tenants)
 Tenants: Przechowuje informacje o podmiotach korzystających z systemu.
 
 Użytkownicy (Users)
+
 Users: Przechowuje informacje o użytkownikach, ich rolach oraz przynależności do podmiotów.
 UserRoles: Przechowuje informacje o rolach użytkowników (pracownik/menadżer).
 UserAssignments: Przechowuje informacje o przypisaniu pracowników do menadżerów.
@@ -25,6 +27,7 @@ Statystyki (Statistics)
 TaskStatistics: Widok generujący statystyki zadań na poziomie użytkowników i miesięcy.
 
 #Procedury składniowe
+
 Dodawanie zadań:
 sp_CreateTask: Tworzy nowe zadanie.
 
