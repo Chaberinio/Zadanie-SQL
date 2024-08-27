@@ -127,3 +127,32 @@ BEGIN
     WHERE UserID = @ManagerID;
 END;
 GO
+
+CREATE PROCEDURE GetTaskStatistics
+    @StartDate DATE, 
+    @EndDate DATE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        U.UserID,
+        U.UserName,
+        FORMAT(T.CreatedAt, 'yyyy-MM') AS Month,
+        T.TaskStatus,
+        COUNT(*) AS TaskCount
+    FROM Tasks T
+    INNER JOIN Users U ON T.UserID = U.UserID
+    WHERE T.CreatedAt BETWEEN @StartDate AND @EndDate
+    GROUP BY 
+        U.UserID,
+        U.UserName,
+        FORMAT(T.CreatedAt, 'yyyy-MM'),
+        T.TaskStatus
+    ORDER BY 
+        U.UserID,
+        Month,
+        T.TaskStatus;
+END;
+GO
+
