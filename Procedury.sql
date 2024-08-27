@@ -1,3 +1,11 @@
+CREATE PROCEDURE AddTenant
+    @TenantName NVARCHAR(255)
+AS
+BEGIN
+    INSERT INTO Tenants (TenantName)
+    VALUES (@TenantName);
+END;
+GO
 
 CREATE PROCEDURE AddUser
     @TenantID INT,
