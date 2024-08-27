@@ -32,6 +32,64 @@ BEGIN
 END;
 GO
 
+CREATE PROCEDURE UpdateTask
+    @TaskID INT,
+    @TaskTitle NVARCHAR(255) = NULL,
+    @TaskPriority NVARCHAR(50) = NULL,
+    @TaskDescription NVARCHAR(MAX) = NULL,
+    @TaskStatus NVARCHAR(50) = NULL,
+    @ChangedBy INT 
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @OldTaskTitle NVARCHAR(255);
+    DECLARE @OldTaskPriority NVARCHAR(50);
+    DECLARE @OldTaskDescription NVARCHAR(MAX);
+    DECLARE @OldTaskStatus NVARCHAR(50);
+    DECLARE @OldUpdatedAt DATETIME;
+
+    SELECT
+        @OldTaskTitle = TaskTitle,
+        @OldTaskPriority = TaskPriority,
+        @OldTaskDescription = TaskDescription,
+        @OldTaskStatus = TaskStatus,
+        @OldUpdatedAt = UpdatedAt
+    FROM Tasks
+    WHERE TaskID = @TaskID;
+
+    UPDATE Tasks
+    SET
+        TaskTitle = ISNULL(@TaskTitle, TaskTitle),
+        TaskPriority = ISNULL(@TaskPriority, TaskPriority),
+        TaskDescription = ISNULL(@TaskDescription, TaskDescription),
+        TaskStatus = ISNULL(@TaskStatus, TaskStatus),
+        UpdatedAt = GETDATE() 
+    WHERE TaskID = @TaskID;
+
+    INSERT INTO TaskHistory (TaskID, ChangedAt, ChangedBy, TaskTitle, TaskPriority, TaskDescription, TaskStatus)
+    VALUES (
+        @TaskID,
+        GETDATE(),
+        @ChangedBy,
+        ISNULL(@TaskTitle, @OldTaskTitle),
+        ISNULL(@TaskPriority, @OldTaskPriority),
+        ISNULL(@TaskDescription, @OldTaskDescription),
+        ISNULL(@TaskStatus, @OldTaskStatus)
+    );
+END;
+GO
+    
+    
+CREATE PROCEDURE DeleteTask
+    @TaskID INT
+AS
+BEGIN
+    DELETE FROM Tasks
+    WHERE TaskID = @TaskID;
+END;
+GO
+
 CREATE PROCEDURE AddUserAssignment
     @ManagerID INT,
     @EmployeeID INT
