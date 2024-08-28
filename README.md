@@ -13,21 +13,17 @@ W samej bazie można by obsłużyć to rolami z odpowiednimi uprawnieniami, ale 
 #Tabele
 
 Podmioty (Tenants)
-Tenants: Przechowuje informacje o podmiotach korzystających z systemu.
+Tenants: Przechowuje informacje o podmiotach korzystających z systemu. Np. Firma A to tenant o ID 1. Do tego podmiotu nalezy użytkownik o ID 1,3,4 itd. 
 
 Użytkownicy (Users)
 
 Users: Przechowuje informacje o użytkownikach, ich rolach oraz przynależności do podmiotów.
-UserRoles: Przechowuje informacje o rolach użytkowników (pracownik/menadżer).
 UserAssignments: Przechowuje informacje o przypisaniu pracowników do menadżerów.
 
 Zadania (Tasks)
 Tasks: Przechowuje informacje o zadaniach.
 TaskHistory: Przechowuje historię zmian zadań.
 TaskShare: Przechowuje informacje o zadaniach udostępnionych innym użytkownikom.
-
-Statystyki (Statistics)
-TaskStatistics: Widok generujący statystyki zadań na poziomie użytkowników i miesięcy.
 
 #Procedury składniowe
 
@@ -50,5 +46,7 @@ CreateTenant: Tworzy nowy podmiot.
 
 Przeglądanie statystyk:
 GetTaskStatistics: Zwraca statystyki zadań dla menadżera.
+GetTasksForManager: Zwraca wszystkie zadania dla menadżera o podanym ID oraz jego podwładnych.
+GetTasksForUser: Zwraca wszystkie zadania dla użytkownika o podanym ID.
 
 Skrypty znajdują się w odpowiednio nazwanych plikach.
